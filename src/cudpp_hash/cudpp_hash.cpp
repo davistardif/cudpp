@@ -573,6 +573,22 @@ cudppMultivalueHashGetIndexCounts(CUDPPHandle plan,
     return CUDPP_SUCCESS;
 }
 
+CUDPP_DLL
+CUDPPResult
+cudppMultivalueHashGetUniqueKeyCount(CUDPPHandle plan, unsigned int * size)
+{
+    hti_void * hti_init = (hti_void *) getPlanPtrFromHandle<hti_void>(plan);
+    if (hti_init->config.type != CUDPP_MULTIVALUE_HASH_TABLE)
+    {
+        // better be a MULTIVALUE
+        return CUDPP_ERROR_ILLEGAL_CONFIGURATION;
+    }
+    hti_multivalue * hti = 
+        (hti_multivalue *) getPlanPtrFromHandle<hti_multivalue>(plan);
+    *size = hti->hash_table->get_unique_key_count();
+    return CUDPP_SUCCESS;
+}
+
 /** @} */ // end Plan Interface
 /** @} */ // end publicInterface
 

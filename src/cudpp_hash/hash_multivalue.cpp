@@ -73,6 +73,7 @@ bool MultivalueHashTable::Build(const unsigned  n,
     CUDA_SAFE_CALL(cudaMemcpy(&num_unique_keys, d_scratch_offsets_ + n - 1,
                               sizeof(unsigned), cudaMemcpyDeviceToHost));
     CUDA_CHECK_ERROR("Failed to get # unique keys");
+    this->unique_keys_size_ = num_unique_keys;
 
     // Keep a list of the unique keys, and store info on each key's data
     // (location in the values array, how many there are).

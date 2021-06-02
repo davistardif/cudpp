@@ -93,6 +93,8 @@ public:
     //! Gets the location and number of values each key has.
     inline const uint2* get_index_counts() const {return d_index_counts_;}
 
+    inline unsigned get_unique_key_count() const {return unique_keys_size_;}
+
     //! Initializes the multi-value hash table's memory.
     /*! See \ref HashTable::Initialize() for an explanation of the parameters.
      *  @param[in] max_input_size Largest expected number of items in the input.
@@ -117,6 +119,7 @@ private:
     unsigned  sorted_values_size_;
     uint2    *d_index_counts_;
     unsigned *d_unique_keys_;
+    unsigned  unique_keys_size_;
     float     target_space_usage_;
 
     // Scratch memory.
