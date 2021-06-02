@@ -136,6 +136,10 @@ CUDPP_DLL CUDPPResult
 cudppMultivalueHashGetAllValues(CUDPPHandle plan, 
                                 unsigned int ** d_vals);
 
+CUDPP_DLL CUDPPResult
+cudppMultivalueHashGetIndexCounts(CUDPPHandle plan,
+				  unsigned int **d_index_counts);
+
 // Leave this at the end of the file
 // Local Variables:
 // mode:c++
